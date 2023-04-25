@@ -114,9 +114,6 @@ html {
 	height: auto
   }
   
-  .media-body {
-	
-  }
   
   /* comment box */
   .detailBox {
@@ -293,7 +290,7 @@ html {
   transition-delay: 0 !important;
   }
   
-  h1 {
+  h1, span{
 	color: var(--list-txt);
   }
 
@@ -326,8 +323,15 @@ html {
   }
   
   .form-group {
-    position: relative;
-    width: 50%;
+    position: absolute;
+    width: 45%;
+}
+.ask-group {
+  position: relative;
+  width: 50%;
+  float:right;
+  display: inline;
+  font-weight: 550;
 }
 
   .toggle-text {
@@ -445,7 +449,7 @@ html {
 	  right: 45%;
 	  top: -15px;
 	  font-size: 35px;
-	  text-shadow: 3px 3px 5px var(--btn-danger);
+	  text-shadow: 3px 3px 5px var(--success-c);
   }
   .dropdown {
 	float: left;
@@ -466,9 +470,6 @@ html {
 	font-family: inherit;
 	margin: 0;
 	color: var(--list-txt);
-  }
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
   }
   
   .dropdown-content {
@@ -524,7 +525,7 @@ html {
 	  }
   }
   
-  .container {
+  .footerContainer {
 	background-color: var(--bg-panel);
 	right:0;
 	  position: relative;
@@ -825,4 +826,45 @@ html {
   }
   .form .link a:hover{
     text-decoration: underline;
+  }
+
+  .post-card {
+    width: 100%;
+    display: flex;
+    box-shadow: 4px 4px 10px 0px rgba(18, 18, 18, 0.1);
+    transition: 0.3s;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .post-card:hover {
+    transform: scale(1.02);
+  }
+  .card2-container {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    flex-direction: column;
+    padding-bottom: 50px;
+    justify-content: space-between;
+  }
+  .text2 {
+    margin-bottom: 40px;
+  }
+  .text3 {
+    font-size: 1.25rem;
+    margin-bottom: 50px;
+  }
+  .profile-name {
+    font-style: normal;
+    font-weight: 600;
+  }
+  .home-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-direction: column;
+    justify-content: space-between;
   }

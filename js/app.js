@@ -19,6 +19,15 @@ const trans = () => {
   }, 700);
 };
 
+function validate(){
+  var message = document.getElementById("message").value;
+  if (message != "" ){
+      return true;
+  } else {
+      return false;
+  }
+}
+
 /*
 function copy() {
   var cpy = document.getElementsByClassName("code");

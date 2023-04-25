@@ -5,60 +5,47 @@
 	$out="a.exe";
 	$code=$_POST["code"];
 	$input=$_POST["input"];
-	$filename_code="main.cpp";
-	$filename_in="input.txt";
-	$filename_error="error.txt";
-	$executable="a.exe";
-	$command=$CC." -lm ".$filename_code;	
-	$command_error=$command." 2>".$filename_error;
+	$file="main.cpp";
+	$file_in="input.txt";
+	$file_err="error.txt";
+	$exe="a.exe";
+	$cmd=$CC." -lm ".$file;	
+	$cmd_err=$cmd." 2>".$file_err;
 	
-	$file_code=fopen($filename_code,"w+");
+	$file_code=fopen($file,"w+");
 	fwrite($file_code,$code);
 	fclose($file_code);
-	$file_in=fopen($filename_in,"w+");
+	$file_in=fopen($file_in,"w+");
 	fwrite($file_in,$input);
 	fclose($file_in);
-	exec("cacls  $executable /g everyone:f"); 
-	exec("cacls  $filename_error /g everyone:f");	
+	exec("cacls  $exe /g everyone:f"); 
+	exec("cacls  $file_err /g everyone:f");	
 
-	shell_exec($command_error);
-	$error=file_get_contents($filename_error);
+	shell_exec($cmd_err);
+	$error=file_get_contents($file_err);
 
-	if(trim($error)=="")
-	{
-		if(trim($input)=="")
-		{
+	if(trim($error)=="") {
+		if(trim($input)=="") {
 			$output=shell_exec($out);
-		}
-		else
-		{
-			$out=$out." < ".$filename_in;
+		} else {
+			$out=$out." < ".$file_in;
 			$output=shell_exec($out);
 		}
 		echo "$output";
-              //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-	}
-	else if(!strpos($error,"error"))
-	{
+	} else if(!strpos($error,"error")) {
 		echo "<pre>$error</pre>";
-		if(trim($input)=="")
-		{
+		if(trim($input)=="") {
 			$output=shell_exec($out);
-		}
-		else
-		{
-			$out=$out." < ".$filename_in;
+		} else {
+			$out=$out." < ".$file_in;
 			$output=shell_exec($out);
 		}
 		echo "$output";
-		                //echo "<textarea id='div' class=\"form-control\" name=\"output\" rows=\"10\" cols=\"50\">$output</textarea><br><br>";
-	}
-	else
-	{
+	} else {
 		echo "<pre>$error</pre>";
 	}
-	exec("del $filename_code");
+	exec("del $file");
 	exec("del *.o");
 	exec("del *.txt");
-	exec("del $executable");
+	exec("del $exe");
 ?>

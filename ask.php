@@ -36,8 +36,70 @@
     </ul>   
 </header>
 
+<div class="">
+        <br>
+        <h3 class="txt">Poszt hozzáadása :</h3>
+        <div class="text-center txtarea">
+            <form action="./php/add_post.php" class="form-group" id="post" method="POST" onsubmit="return validate()">
+                <input type="text" name="title" class="form-cat" placeholder="Cím">
+                <textarea name="ask" class="form-control" id="message" cols="30" rows="7"></textarea>
+                <br>
+                <input type="submit" class="btn btn-success" form="post" value="Hozzáadás"><br><br><br>
+            </form>
+        </div>
+    </div>
+    <div>
+    <div class="ask-group">
+      <?php
+        $query = "select * from questions where 1 order by felrakva desc";
+        $posts = mysqli_query($db, $query);
+        $num_row = mysqli_num_rows($posts);
+        if ( $num_row === 0){
+            echo"
+            <br>
+            <div class=\" text-center\">
+                <h1 style=\"text-align: center;\">Nincsenek Kérdések feltöltve!</h1>
+            </div>
+            ";
+        } else {
+            foreach($posts as $post){
+                $name = $post["user"];
+                $cim = $post["title"];
+                $text1 = nl2br($post["question"]);
+                $text2 = nl2br($post["answer"]);
+                $date = date('Y/m/d', time()); - $post["felrakva"];
+                echo "
+                <div class=\"home-container\">
+                  <div class=\"post-card\">
+                    <div class=\"card2-container\">
+                      <h1 class=\"text2\">
+                        <span>$cim</span>
+                      </h1>
 
-
+                      <h4>
+                        <span>$date ideje</span>
+                      </h4>
+                      <span class=\"text3\">
+                        <span>
+                          $text1
+                        </span>
+                        <hr>
+                        <span>
+                          <p style=\"color:red\">
+                          $text2
+                          </p>
+                        </span>
+                      </span>
+                      <span class=\"profile-name\"><span>$name</span></span>
+                    </div>
+                  </div>
+                </div>
+                ";
+            }
+        }
+        ?>
+    </div>
+  </div>
   <footer>
   <div class="container footerContainer">
     <div class="footer-nav flex flex-around flex-start flex-g-1">
@@ -64,7 +126,7 @@
       </div>
       
     </div>
-    <div class="copyright">A teljes project elérhető githubon <a href="https://github.com/Dedzsinator/Chemmit">ezen a linken</a>. </div>
+    <div class="copyright">A teljes project elérhető githubon <a href="https://github.com/Dedzsinator/C-">ezen a linken</a>. </div>
   </div>
 </footer>
 <script src="./js/app.js"></script>

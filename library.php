@@ -96,7 +96,7 @@
       </div>
       
     </div>
-    <div class="copyright">A teljes project elérhető githubon <a href="https://github.com/Dedzsinator/Chemmit">ezen a linken</a>. </div>
+    <div class="copyright">A teljes project elérhető githubon <a href="https://github.com/Dedzsinator/C-">ezen a linken</a>. </div>
   </div>
 </footer>
 <script>

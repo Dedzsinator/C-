@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2023 at 12:08 AM
+-- Generation Time: Apr 25, 2023 at 11:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -56,9 +56,22 @@ INSERT INTO `codes` (`id`, `name`, `code`) VALUES
 CREATE TABLE `questions` (
   `id` int(11) DEFAULT NULL,
   `user` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `question` varchar(800) NOT NULL,
-  `answer` varchar(800) NOT NULL
+  `answer` varchar(800) NOT NULL,
+  `felrakva` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `user`, `title`, `question`, `answer`, `felrakva`) VALUES
+(1, 'Admin', 'Első', 'Mikor készül el az oldal?', '', '2023-04-25'),
+(2, 'Tester1', 'Műveletek', 'Melyik a legtöbbet használt C / C++ utasítás', 'Általánosan elmondható, hogy az értékadás mondható a leghasználtabb utasításnak.', '2023-04-25'),
+(3, '', 'Harmadik', 'Lehetőleg a legutolsó nem C vel kapcsolatos poszt de, mikor lesz meg?', '', '2023-04-26'),
+(4, '', 'Negyedik', 'Még egy teszt.', '', '2023-04-26'),
+(5, '', 'Mégegy', 'Még egy teszt, megint.', '', '2023-04-26');
 
 -- --------------------------------------------------------
 
@@ -82,7 +95,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `unique_id`, `username`, `fname`, `lname`, `email`, `password`, `status`) VALUES
-(1, 1307009951, 'Tester', 'Tester', 'Tester', 'Tester@gmail.com', '2a796972a1b252970d9d9724cf635be8', 'Aktiv');
+(1, 1307009951, 'Tester', 'Tester', 'Tester', 'Tester@gmail.com', '2a796972a1b252970d9d9724cf635be8', 'Aktiv'),
+(2, 1131386376, 'Admin', 'Admin', 'Admin', 'Admin@gmail.com', '2a796972a1b252970d9d9724cf635be8', 'Aktiv');
 
 --
 -- Indexes for dumped tables
@@ -114,7 +128,7 @@ ALTER TABLE `codes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
